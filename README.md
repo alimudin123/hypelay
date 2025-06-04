@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="right">
 بِسْــــــــــــــمِ اللَّهِ الرَّحْمَنِ الرَّحِيم 
 </p>
@@ -46,3 +47,6 @@ Saya menerima dengan baik kontribusi kamu untuk project starter ini.
 
 ## Support Me
 Dukung aku [https://saweria.co/afrizalmy](https://saweria.co/afrizalmy)
+=======
+# hypelay
+>>>>>>> 047bf011a636f04002f3a33cef474f24ed2018b2
