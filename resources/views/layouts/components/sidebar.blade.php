@@ -44,22 +44,11 @@ $navigation_links = json_decode(json_encode($links));
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="{{ asset('vendor/adminlte3/img/AdminLTELogo.png') }}" alt="HYPELAY WEAR" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">HYPELAY WEAR</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- SidebarSearch Form -->
-      <div class="form-inline mt-2">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
     <nav class="mt-2">

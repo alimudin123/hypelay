@@ -5,33 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
+     * Tidak dipakai karena kita override method `authenticated`.
      *
      * @var string
      */
-    protected $redirectTo = 'dashboard/admin';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -39,9 +28,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Get the login username to be used by the controller.
-     *
-     * @return string
+     * Menentukan kolom yang digunakan untuk login.
      */
     public function username()
     {
@@ -49,12 +36,28 @@ class LoginController extends Controller
     }
 
     /**
-     * Show the application's login form.
-     *
-     * @return \Illuminate\View\View
+     * Menampilkan halaman login.
      */
     public function showLoginForm()
     {
         return view('auth.login');
+    }
+
+    /**
+     * Redirect pengguna berdasarkan role setelah login berhasil.
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->role === 'pegawai') {
+            return redirect()->route('home'); // Mengarah ke dashboard pegawai
+        }
+
+        if ($user->role === 'customer') {
+            return redirect()->route('pengguna'); // Mengarah ke halaman utama
+        }
+
+        // Default jika role tidak dikenali
+        auth()->logout(); // logout user
+        return redirect()->route('login')->withErrors(['email' => 'Role tidak dikenali.']);
     }
 }

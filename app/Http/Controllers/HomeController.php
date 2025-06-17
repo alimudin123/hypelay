@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('page.admin.dashboard');
     }
 
     public function profile()
@@ -47,18 +47,18 @@ class HomeController extends Controller
             $img_old = Auth::user()->user_image;
             if ($request->file('user_image')) {
                 # delete old img
-                if ($img_old && file_exists(public_path().$img_old)) {
-                    unlink(public_path().$img_old);
+                if ($img_old && file_exists(public_path() . $img_old)) {
+                    unlink(public_path() . $img_old);
                 }
                 $nama_gambar = time() . '_' . $request->file('user_image')->getClientOriginalName();
                 $upload = $request->user_image->storeAs('public/admin/user_profile', $nama_gambar);
                 $img_old = Storage::url($upload);
             }
             $usr->update([
-                    'name' => $request->name,
-                    'email' => $request->email,
-                    'user_image' => $img_old
-                ]);
+                'name' => $request->name,
+                'email' => $request->email,
+                'user_image' => $img_old
+            ]);
             return redirect()->route('profile')->with('status', 'Perubahan telah tersimpan');
         } elseif ($request->input('type') == 'change_password') {
             $this->validate($request, [

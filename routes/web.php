@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AkunController;
 use App\Http\Controllers\produkController;
 use App\Http\Controllers\LaporanPenjualanController;
+use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,25 @@ use App\Http\Controllers\LaporanPenjualanController;
 | Di sinilah Anda dapat mendaftarkan rute web untuk aplikasi Anda.
 */
 
+// Untuk customer
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('beranda');
 
 Auth::routes();
+
+Route::get('/redirect', function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return redirect()->route('home'); // route admin
+        } else {
+            return redirect('/pengguna'); // route customer
+        }
+    }
+
+    return redirect('/login');
+});
 
 // Produk (Dashboard Admin)
 Route::prefix('dashboard/admin')->group(function () {
@@ -55,3 +70,27 @@ Route::controller(AkunController::class)
         Route::match(['get', 'post'], '/{id}/ubah', 'ubahAkun')->name('edit');
         Route::delete('/{id}/hapus', 'hapusAkun')->name('delete');
     });
+
+// Katalog
+Route::get('/katalog', function () {
+    return view('katalog');
+})->name('katalog');
+
+Route::get('/keranjang', function () {
+    return view('keranjang');
+})->name('keranjang');
+
+Route::get('/pengguna', function () {
+    return view('pengguna');
+})->name('pengguna');
+
+Route::middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/akun', [AkunController::class, 'index']);
+});
+
+Route::get('/profile/edit', [PenggunaController::class, 'edit'])->name('profile.edit');
+Route::put('/profile/update', [PenggunaController::class, 'update'])->name('profile.update');
+
+Route::post('/profile/upload-image', [App\Http\Controllers\PenggunaController::class, 'uploadImage'])->name('profile.uploadImage');
+
+Route::get('/akun', [App\Http\Controllers\AkunController::class, 'index'])->name('akun.index');
