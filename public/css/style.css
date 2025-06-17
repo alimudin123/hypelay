@@ -1,0 +1,23 @@
+/* Nav */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: #059669 !important;
+  user-select: none;
+}
+
+.nav-link {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #059669 !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background-color: #d1fae5;
+  color: #064e3b !important;
+  outline: none;
+}
