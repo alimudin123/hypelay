@@ -24,7 +24,9 @@ class PenggunaController extends Controller
             'email'       => 'required|email',
             'phone'       => 'nullable|digits_between:10,15',
             'address'     => 'nullable|string|max:255',
+            'district'    => 'nullable|string|max:100',
             'city'        => 'nullable|string|max:100',
+            'province'    => 'nullable|string|max:100',
             'postalCode'  => 'nullable|digits_between:5,10',
         ]);
 
@@ -36,12 +38,15 @@ class PenggunaController extends Controller
         $user->dataPengguna()->updateOrCreate(
             ['user_id' => $user->id],
             [
-                'phone' => $validated['phone'] ?? null,
-                'address' => $validated['address'] ?? null,
-                'city' => $validated['city'] ?? null,
+                'phone'       => $validated['phone'] ?? null,
+                'address'     => $validated['address'] ?? null,
+                'district'    => $validated['district'] ?? null,
+                'city'        => $validated['city'] ?? null,
+                'province'    => $validated['province'] ?? null,
                 'postal_code' => $validated['postalCode'] ?? null,
             ]
         );
+
         return redirect()->route('pengguna')->with('success', 'Profil berhasil diperbarui.');
     }
 
@@ -63,7 +68,7 @@ class PenggunaController extends Controller
         $filename = uniqid() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('profile', $filename, 'public');
 
-        // Update database
+        // Simpan hanya nama file
         $user->user_image = $filename;
         $user->save();
 

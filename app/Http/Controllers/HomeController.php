@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Kategori;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('page.admin.dashboard');
+        $kategori = Kategori::withCount('produks')->get();
+
+        $label = $kategori->pluck('kategori'); // array nama kategori
+        $value = $kategori->pluck('produks_count'); // array jumlah produk per kategori
+
+        return view('page.admin.dashboard', compact('label', 'value'));
     }
 
     public function profile()

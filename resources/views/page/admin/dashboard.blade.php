@@ -1,37 +1,55 @@
 @extends('layouts.base_admin.base_dashboard')
 @section('judul', 'Halaman Dashboard')
+
 @section('content')
 <!-- Content Header (Page header) -->
-<section class="content-header">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1>Dashboard</h1>
-            </div>
-            <div class="col-sm-6">
-            </div>
-        </div>
-    </div><!-- /.container-fluid -->
-</section>
+<div class="mt-5">
+    <h5 class="text-center mb-4">Statistik Produk per Kategori</h5>
+    <div id="canvasproduk" style="width:100%; height:400px;"></div>
+</div>
+@endsection
 
-<section class="content">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+@section('scripts')
+<!-- Highcharts CDN -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                        @endif
-                        {{ __('You are logged in!') }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        Highcharts.chart('canvasproduk', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Produk Per Kategori',
+                align: 'center'
+            },
+            xAxis: {
+                categories: {!! json_encode($label) !!}, // ✅ FIXED
+                crosshair: true,
+                accessibility: {
+                    description: 'Kategori'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Jumlah Produk'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' pcs'
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [{
+                name: 'Produk per Kategori',
+                data: {!! json_encode($value) !!} // ✅ FIXED
+            }]
+        });
+    });
+</script>
 @endsection

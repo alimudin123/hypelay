@@ -4,140 +4,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Katalog Produk Minimalis Fashion Brand</title>
+  <title>Katalog Produk</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="{{ asset('css/style.css') }}" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #fff;
-      color: #111;
-      margin: 0;
+      background-color: #ffffff;
+      color: #000000;
       padding: 2rem 1rem;
     }
 
-    /* Katalog */
-    h2.catalog-title {
+    .catalog-title {
       font-weight: 700;
       font-size: 2.5rem;
-      margin-bottom: 3rem;
-      letter-spacing: 0.04em;
-      color: #111;
+      margin-bottom: 2rem;
       text-align: center;
+      color: #000000;
     }
 
     .catalog-grid {
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      padding: 0 1rem;
+      gap: 2rem;
     }
 
     .catalog-item {
-      background-color: #fff;
-      border-radius: 1rem;
+      background: #ffffff;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
+      transition: 0.3s;
+      border: 1px solid #e5e5e5;
     }
 
-    .catalog-item:hover,
-    .catalog-item:focus-within {
-      transform: translateY(-10px);
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-      outline: none;
-    }
-
-    .catalog-img-wrapper {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border-bottom: 1px solid #f0f0f0;
+    .catalog-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
     .catalog-img-wrapper img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .catalog-item:hover .catalog-img-wrapper img {
-      transform: scale(1.05);
     }
 
     .catalog-info {
-      padding: 1.5rem 1.25rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 1rem;
+      text-align: center;
     }
 
     .catalog-name {
       font-weight: 600;
-      font-size: 1.125rem;
-      color: #222;
-      margin: 0;
-      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #000000;
+    }
+
+    .catalog-price {
+      color: #a6a6a6;
+      font-weight: 500;
     }
   </style>
+
 </head>
 
 <body>
-  @include('layouts.header')
+  @include('layouts.app')
 
-  <h2 class="catalog-title">Our Collection</h2>
-
-  <div class="catalog-grid" role="list" aria-label="Katalog Produk Fashion Minimalis">
-    <article class="catalog-item" role="listitem" tabindex="0">
-      <div class="catalog-img-wrapper">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6a3075c6-c7cd-4257-974c-67a31fff2ba7.png" alt="Foto produk fashion minimalis warna hijau dengan desain elegan" />
+  @if(session('success'))
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+    <div id="toastSuccess" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          {{ session('success') }}
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div class="catalog-info">
-        <h3 class="catalog-name">Nama Produk 1</h3>
-      </div>
-    </article>
-    <article class="catalog-item" role="listitem" tabindex="0">
-      <div class="catalog-img-wrapper">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a155850b-3f46-46c7-801d-38bb18f6e7dd.png" alt="Foto produk fashion minimalis warna hijau tua dengan desain elegan" />
-      </div>
-      <div class="catalog-info">
-        <h3 class="catalog-name">Nama Produk 2</h3>
-      </div>
-    </article>
-    <article class="catalog-item" role="listitem" tabindex="0">
-      <div class="catalog-img-wrapper">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/20b13b25-9faf-4d61-bc1d-cce5aa3ea916.png" alt="Foto produk fashion minimalis warna hijau klasik dengan desain elegan" />
-      </div>
-      <div class="catalog-info">
-        <h3 class="catalog-name">Nama Produk 3</h3>
-      </div>
-    </article>
-    <article class="catalog-item" role="listitem" tabindex="0">
-      <div class="catalog-img-wrapper">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3a83054c-5dcd-4ae8-99ea-a0344d9d606e.png" alt="Foto produk fashion minimalis warna hijau segar dengan desain elegan" />
-      </div>
-      <div class="catalog-info">
-        <h3 class="catalog-name">Nama Produk 4</h3>
-      </div>
-    </article>
-    <article class="catalog-item" role="listitem" tabindex="0">
-      <div class="catalog-img-wrapper">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/180467f8-daf2-4222-81eb-76d762107ac7.png" alt="Foto produk fashion minimalis warna hijau tua dengan desain elegan" />
-      </div>
-      <div class="catalog-info">
-        <h3 class="catalog-name">Nama Produk 5</h3>
-      </div>
-    </article>
+    </div>
   </div>
+  @endif
 
+  <h2 class="catalog-title">Katalog Produk</h2>
+
+  <div class="container">
+    <div class="catalog-grid">
+      @foreach($produks as $produk)
+      <article class="catalog-item">
+        <div class="catalog-img-wrapper">
+          <a href="{{ route('produk.detail', $produk->id) }}">
+            <img src="{{ asset('storage/' . $produk->foto) }}" alt="{{ $produk->nama }}">
+          </a>
+        </div>
+        <div class="catalog-info">
+          <h3 class="catalog-name">{{ $produk->nama }}</h3>
+          <p class="text-center">Rp {{ number_format($produk->harga_jual, 0, ',', '.') }}</p>
+
+          {{-- Tambah ke Keranjang --}}
+          <form action="{{ route('keranjang.tambah', $produk->id) }}" method="POST">
+            @csrf
+            <button type="submit" class="btn" style="background-color: #000000; color: #ffffff; border: none;">
+              Tambah ke Keranjang
+            </button>
+          </form>
+        </div>
+      </article>
+      @endforeach
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const toastEl = document.getElementById('toastSuccess');
+      if (toastEl) {
+        const toast = new bootstrap.Toast(toastEl);
+        toast.show();
+      }
+    });
+  </script>
 </body>
 
 </html>

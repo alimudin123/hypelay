@@ -2,43 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+
+
 
 class LaporanPenjualanController extends Controller
 {
-    /**
-     * Menampilkan halaman laporan penjualan.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
+    public function index(Request $request)
     {
-        return view('laporan.penjualan'); // Pastikan file view ini ada di resources/views/laporan/penjualan.blade.php
+        $query = Transaksi::with(['user', 'items'])->where('status', '!=', 'pending');
+
+        if ($request->from) {
+            $query->whereDate('created_at', '>=', $request->from);
+        }
+
+        if ($request->to) {
+            $query->whereDate('created_at', '<=', $request->to);
+        }
+
+        if ($request->bulan && $request->tahun) {
+            $query->whereMonth('created_at', $request->bulan)
+                ->whereYear('created_at', $request->tahun);
+        }
+
+        $laporan = $query->latest()->get();
+
+        return view('page.admin.laporan.index', compact('laporan'));
     }
 
-    /**
-     * Mendapatkan data penjualan untuk laporan dalam format JSON.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function data(Request $request)
+    public function exportPdf(Request $request)
     {
-        $query = DB::table('penjualan');
+        $query = Transaksi::with('user')->where('status', '!=', 'pending');
 
-        // Filter berdasarkan tanggal mulai dan tanggal akhir jika disediakan
-        if ($request->has('tanggal_mulai') && $request->tanggal_mulai) {
-            $query->where('tanggal_penjualan', '>=', $request->tanggal_mulai);
-        }
-        if ($request->has('tanggal_akhir') && $request->tanggal_akhir) {
-            $query->where('tanggal_penjualan', '<=', $request->tanggal_akhir);
+        if ($request->from) {
+            $query->whereDate('created_at', '>=', $request->from);
         }
 
-        $data = $query->orderBy('tanggal_penjualan', 'desc')->get();
+        if ($request->to) {
+            $query->whereDate('created_at', '<=', $request->to);
+        }
 
-        return response()->json([
-            'data' => $data,
-        ]);
+        $laporan = $query->latest()->get();
+
+        $pdf = Pdf::loadView('exports.laporan_penjualan_pdf', compact('laporan'));
+        return $pdf->download('laporan-penjualan.pdf');
     }
 }

@@ -37,9 +37,21 @@
         </div>
 
         <div class="mb-3">
+            <label for="district" class="form-label">Kecamatan</label>
+            <input type="text" class="form-control" id="district" name="district"
+                value="{{ old('district', Auth::user()->dataPengguna->district ?? '') }}">
+        </div>
+
+        <div class="mb-3">
             <label for="city" class="form-label">Kota</label>
             <input type="text" class="form-control" id="city" name="city"
                 value="{{ old('city', Auth::user()->dataPengguna->city ?? '') }}">
+        </div>
+
+        <div class="mb-3">
+            <label for="province" class="form-label">Provinsi</label>
+            <input type="text" class="form-control" id="province" name="province"
+                value="{{ old('province', Auth::user()->dataPengguna->province ?? '') }}">
         </div>
 
         <div class="mb-3">

@@ -33,7 +33,7 @@ Profil') @section('content')
                             <img
                                 src="{{ Auth::user()->user_image }}"
                                 class="profile-user-img img-fluid img-circle"
-                                alt="User Imagess">
+                                alt="ss">
                             @else
                             <img
                                 src="{{ asset('vendor/adminlte3/img/user2-160x160.jpg') }}"

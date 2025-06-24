@@ -13,8 +13,8 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fff;
-            color: #111;
+            background-color: #ffffff;
+            color: #000000;
             padding: 2rem 1rem;
         }
 
@@ -24,11 +24,13 @@
         }
 
         h1 {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            color: #059669;
+            color: #000000;
             text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         table {
@@ -40,30 +42,31 @@
         thead th {
             text-align: left;
             padding-bottom: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.125rem;
-            border-bottom: 2px solid #059669;
+            border-bottom: 2px solid #000000;
+            color: #000000;
         }
 
         tbody tr {
-            background: #f9fafb;
+            background: #f2f2f2;
             border-radius: 1rem;
-            box-shadow: 0 4px 12px rgb(0 0 0 / 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: box-shadow 0.3s ease;
         }
 
         tbody tr:hover,
         tbody tr:focus-within {
-            box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             outline: none;
         }
 
         td {
             vertical-align: middle;
             padding: 1rem 1.25rem;
+            color: #000000;
         }
 
-        /* Product info */
         .product-info {
             display: flex;
             align-items: center;
@@ -76,46 +79,43 @@
             border-radius: 0.75rem;
             object-fit: cover;
             flex-shrink: 0;
-            box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .product-name {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.1rem;
-            color: #111;
+            color: #000000;
         }
 
-        /* Quantity controls */
         .quantity-input {
             width: 70px;
             text-align: center;
             font-size: 1rem;
             padding: 0.375rem;
             border-radius: 0.5rem;
-            border: 1px solid #d1d5db;
-            outline-offset: 2px;
+            border: 1px solid #a6a6a6;
             transition: border-color 0.3s ease;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         .quantity-input:focus {
-            border-color: #059669;
-            box-shadow: 0 0 0 3px rgb(5 150 105 / 0.3);
+            border-color: #000000;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
             outline: none;
         }
 
-        /* Price */
         .price {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.125rem;
-            color: #059669;
+            color: #000000;
         }
 
-        /* Remove button */
         .btn-remove {
             background: transparent;
             border: none;
-            color: #dc2626;
-            /* red-600 */
+            color: #b91c1c;
             font-size: 1.5rem;
             cursor: pointer;
             transition: color 0.3s ease;
@@ -123,28 +123,27 @@
 
         .btn-remove:hover,
         .btn-remove:focus {
-            color: #b91c1c;
-            /* red-700 */
+            color: #7f1d1d;
             outline: none;
         }
 
-        /* Summary box */
         .cart-summary {
             max-width: 400px;
             margin-top: 3rem;
             padding: 2rem;
-            background: #f3f4f6;
+            background: #f2f2f2;
             border-radius: 1rem;
-            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.1);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
         }
 
         .summary-title {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid #059669;
+            border-bottom: 2px solid #000000;
             padding-bottom: 0.5rem;
-            color: #059669;
+            color: #000000;
+            text-transform: uppercase;
         }
 
         .summary-item {
@@ -153,39 +152,46 @@
             font-weight: 600;
             font-size: 1.125rem;
             margin-bottom: 1rem;
+            color: #000000;
         }
 
         .summary-total {
             font-size: 1.5rem;
-            font-weight: 800;
-            border-top: 2px solid #059669;
+            font-weight: 900;
+            border-top: 2px solid #000000;
             padding-top: 1rem;
-            color: #059669;
+            color: #000000;
         }
 
-        /* Checkout button */
-        .btn-checkout {
-            margin-top: 2rem;
-            background: linear-gradient(135deg, #059669, #10b981);
+        .btn-checkout-custom {
+            background-color: #000000;
+            /* Hitam */
+            color: #ffffff;
+            /* Teks putih */
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            padding: 1.25rem 0;
+            min-height: 80px;
+            min-width: 100%;
             border: none;
             border-radius: 2rem;
-            color: white;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             font-weight: 700;
-            font-size: 1.25rem;
-            padding: 1rem 2.5rem;
-            width: 100%;
-            transition: background 0.3s ease;
-            user-select: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
             cursor: pointer;
+            user-select: none;
+            text-align: center;
         }
 
-        .btn-checkout:hover,
-        .btn-checkout:focus {
-            background: linear-gradient(135deg, #10b981, #059669);
+        .btn-checkout-custom:hover,
+        .btn-checkout-custom:focus {
+            background-color:rgb(255, 255, 255);
+            transform: translateY(-2px);
             outline: none;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .product-info {
                 flex-direction: column;
@@ -209,16 +215,23 @@
             }
         }
     </style>
+
 </head>
 
 <body>
-    @include('layouts.header')
+    @include('layouts.app')
+
     <main class="container" role="main">
+        @auth
         <h1>Keranjang Belanja</h1>
+
         <div class="table-responsive" tabindex="0" aria-label="Daftar produk di keranjang belanja Anda">
             <table>
                 <thead>
                     <tr>
+                        <th scope="col">
+                            <input type="checkbox" id="check-all">
+                        </th>
                         <th scope="col">Produk</th>
                         <th scope="col">Jumlah</th>
                         <th scope="col">Harga Satuan</th>
@@ -227,132 +240,178 @@
                     </tr>
                 </thead>
                 <tbody id="cart-items">
-                    <!-- Cart items will be dynamically inserted here -->
+                    @php $subtotal = 0; @endphp
+                    @if(session('cart'))
+                    @foreach(session('cart') as $id => $details)
+                    @php
+                    $lineTotal = $details['price'] * $details['quantity'];
+                    $subtotal += $lineTotal;
+                    @endphp
                     <tr tabindex="0">
                         <td>
+                            <input type="checkbox" class="item-checkbox" data-id="{{ $id }}" checked>
+                        </td>
+                        <td>
                             <div class="product-info">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f69667a9-dec4-4b11-a396-fedc1ca3e5a8.png" alt="Produk fashion nomor satu - Jaket hijau premium minimalis" class="product-img" />
-                                <div class="product-name">Jaket Hijau Premium</div>
+                                <img src="{{ asset('storage/' . $details['image']) }}" alt="Gambar produk {{ $details['name'] }}" class="product-img" />
+                                <div class="product-name">{{ $details['name'] }}</div>
                             </div>
                         </td>
                         <td>
-                            <input type="number" min="1" value="1" class="quantity-input" aria-label="Jumlah Jaket Hijau Premium" />
+                            <input type="number" min="1" value="{{ $details['quantity'] }}" class="quantity-input" data-id="{{ $id }}" />
                         </td>
-                        <td class="price" aria-label="Harga satuan Jaket Hijau Premium">Rp450.000</td>
-                        <td class="price subtotal">Rp450.000</td>
+                        <td class="price">Rp{{ number_format($details['price'], 0, ',', '.') }}</td>
+                        <td class="price subtotal">Rp{{ number_format($lineTotal, 0, ',', '.') }}</td>
                         <td>
-                            <button class="btn-remove" aria-label="Hapus Jaket Hijau Premium dari keranjang" title="Hapus">
-                                <span class="material-icons">delete</span>
-                            </button>
+                            <form action="{{ route('cart.remove', $id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-remove" aria-label="Hapus produk ini">
+                                    <span class="material-icons">delete</span>
+                                </button>
+                            </form>
                         </td>
                     </tr>
-                    <tr tabindex="0">
-                        <td>
-                            <div class="product-info">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/07c6d9f0-7486-4466-a36d-624c484beaf5.png" alt="Produk fashion nomor dua - Sepatu hijau elegan minimalis" class="product-img" />
-                                <div class="product-name">Sepatu Hijau Elegan</div>
-                            </div>
-                        </td>
-                        <td>
-                            <input type="number" min="1" value="2" class="quantity-input" aria-label="Jumlah Sepatu Hijau Elegan" />
-                        </td>
-                        <td class="price" aria-label="Harga satuan Sepatu Hijau Elegan">Rp650.000</td>
-                        <td class="price subtotal">Rp1.300.000</td>
-                        <td>
-                            <button class="btn-remove" aria-label="Hapus Sepatu Hijau Elegan dari keranjang" title="Hapus">
-                                <span class="material-icons">delete</span>
-                            </button>
-                        </td>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="6" class="text-center">Keranjang belanja kosong.</td>
                     </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
 
-        <aside class="cart-summary" aria-labelledby="summary-title" tabindex="0">
-            <h2 id="summary-title" class="summary-title">Ringkasan Belanja</h2>
-            <div class="summary-item">
+        @if(session('cart'))
+        <aside class="cart-summary shadow-sm p-4 rounded" aria-labelledby="summary-title" tabindex="0" style="background-color: #f8f9fa;">
+            <h2 id="summary-title" class="summary-title font-weight-bold mb-3">Ringkasan Belanja</h2>
+
+            <div class="summary-item d-flex justify-content-between mb-2">
                 <span>Subtotal</span>
-                <span id="subtotal-amount">Rp1.750.000</span>
+                <span id="subtotal-amount">
+                    Rp{{ number_format($subtotal, 0, ',', '.') }}
+                </span>
             </div>
-            <div class="summary-item">
+
+            <div class="summary-item d-flex justify-content-between mb-2">
                 <span>Biaya Pengiriman</span>
-                <span id="shipping-fee">Rp50.000</span>
+                <span id="shipping-fee">Rp 0</span>
             </div>
-            <div class="summary-total">
+
+            <div class="summary-total d-flex justify-content-between font-weight-bold mt-3">
                 <span>Total</span>
-                <span id="total-amount">Rp1.800.000</span>
+                <span id="total-amount">
+                    Rp{{ number_format($subtotal, 0, ',', '.') }}
+                </span>
             </div>
-            <button class="btn-checkout" type="button" aria-label="Lanjut ke pembayaran">Lanjut ke Pembayaran</button>
+
+            <form action="{{ route('checkout') }}" method="GET" id="checkout-form">
+                <input type="hidden" name="selected_items" id="selected-items-input">
+                <button type="submit" class="btn btn-checkout-custom btn-block mt-4" aria-label="Lanjut ke pembayaran">
+                    Lanjut ke Pembayaran
+                </button>
+            </form>
+
         </aside>
+        @endif
+        @else
+        <div class="text-center mt-5">
+            <p class="fs-5">Silakan login terlebih dahulu untuk melihat keranjang belanja Anda.</p>
+            <a href="{{ route('login') }}" class="btn btn-success btn-lg mt-3">Login</a>
+        </div>
+        @endauth
     </main>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript -->
     <script>
-        // Helper to parse price string "Rp1.200.000" => 1200000
-        function parsePrice(priceStr) {
-            return Number(priceStr.replace(/[Rp.\s]/g, ''));
-        }
-        // Helper to format number to IDR string
-        function formatPrice(num) {
-            return 'Rp' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const cartItemsContainer = document.getElementById('cart-items');
-            const subtotalElem = document.getElementById('subtotal-amount');
+            const subtotalDisplay = document.getElementById('subtotal-amount');
             const shippingFeeElem = document.getElementById('shipping-fee');
             const totalElem = document.getElementById('total-amount');
-            const shippingFee = 50000; // fixed shipping fee
+            const selectedItemsInput = document.getElementById('selected-items-input');
+            const checkoutForm = document.getElementById('checkout-form');
+            const checkAll = document.getElementById('check-all');
+            const checkboxSelector = '.item-checkbox';
+            const shippingFee = 0;
 
-            // Calculate and update totals
+            function parsePrice(priceStr) {
+                return Number(priceStr.replace(/[Rp.\s]/g, ''));
+            }
+
+            function formatPrice(num) {
+                return 'Rp' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            }
+
             function updateTotals() {
                 let subtotal = 0;
                 const rows = cartItemsContainer.querySelectorAll('tr');
+
                 rows.forEach(row => {
+                    const checkbox = row.querySelector(checkboxSelector);
                     const qtyInput = row.querySelector('.quantity-input');
-                    const priceElem = row.querySelector('td:nth-child(3)');
+                    const priceElem = row.querySelector('td:nth-child(4)');
                     const subtotalElem = row.querySelector('.subtotal');
-                    if (qtyInput && priceElem && subtotalElem) {
+
+                    if (checkbox && checkbox.checked && qtyInput && priceElem && subtotalElem) {
                         const qty = parseInt(qtyInput.value) || 1;
                         const unitPrice = parsePrice(priceElem.textContent);
                         const lineTotal = qty * unitPrice;
                         subtotalElem.textContent = formatPrice(lineTotal);
                         subtotal += lineTotal;
+                    } else {
+                        // Jika tidak dicek, kosongkan subtotal item
+                        if (subtotalElem) subtotalElem.textContent = '-';
                     }
                 });
-                subtotalElem.textContent = formatPrice(subtotal);
-                const total = subtotal + shippingFee;
+
+                subtotalDisplay.textContent = formatPrice(subtotal);
                 shippingFeeElem.textContent = formatPrice(shippingFee);
-                totalElem.textContent = formatPrice(total);
+                totalElem.textContent = formatPrice(subtotal);
             }
 
-            // Handle quantity change
+            function getCheckedItems() {
+                const checkboxes = document.querySelectorAll(checkboxSelector);
+                return Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.dataset.id);
+            }
+
+            // Update saat quantity berubah
             cartItemsContainer.addEventListener('input', e => {
                 if (e.target.classList.contains('quantity-input')) {
-                    let val = parseInt(e.target.value);
-                    if (isNaN(val) || val < 1) {
-                        val = 1;
-                        e.target.value = val;
-                    }
                     updateTotals();
                 }
             });
 
-            // Handle remove item
-            cartItemsContainer.addEventListener('click', e => {
-                if (e.target.closest('.btn-remove')) {
-                    const row = e.target.closest('tr');
-                    if (row) {
-                        row.remove();
-                        updateTotals();
-                    }
-                }
+            // Update saat checkbox berubah
+            document.querySelectorAll(checkboxSelector).forEach(cb => {
+                cb.addEventListener('change', updateTotals);
             });
 
+            // Check all
+            checkAll.addEventListener('change', function() {
+                const allCheckboxes = document.querySelectorAll(checkboxSelector);
+                allCheckboxes.forEach(cb => cb.checked = this.checked);
+                updateTotals();
+            });
+
+            // Submit checkout form
+            checkoutForm.addEventListener('submit', function(e) {
+                const selected = getCheckedItems();
+                if (selected.length === 0) {
+                    e.preventDefault();
+                    alert('Pilih setidaknya satu produk untuk melanjutkan pembayaran.');
+                    return;
+                }
+                selectedItemsInput.value = selected.join(',');
+            });
+
+            // Panggil awal saat halaman dimuat
             updateTotals();
         });
     </script>
+
 </body>
 
 </html>

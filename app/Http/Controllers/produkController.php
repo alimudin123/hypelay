@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produk; // Pastikan ini menggunakan huruf kapital
+use App\Models\Produk;
 use App\Models\Kategori;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
@@ -45,6 +46,7 @@ class ProdukController extends Controller
             'qty' => $request->qty,
             'harga_beli' => $request->harga_beli,
             'harga_jual' => $request->harga_jual,
+            'status_ongkir' => 'Pembeli', // otomatis default
         ]);
 
         return redirect()->route('produk.index')->with(['success' => 'Data Berhasil Disimpan!']);
@@ -106,5 +108,58 @@ class ProdukController extends Controller
         }
 
         return redirect()->route('produk.index')->with('error', 'Gagal Menghapus Data!');
+    }
+
+    public function updateFoto(Request $request, $id)
+    {
+        $request->validate([
+            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $produk = Produk::findOrFail($id);
+
+        // Hapus foto lama (jika ada)
+        if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
+            Storage::disk('public')->delete($produk->foto);
+        }
+
+        $path = $request->file('foto')->store('produk', 'public');
+        $produk->foto = $path;
+        $produk->save();
+
+        return back()->with('status', 'Foto produk berhasil diperbarui!');
+    }
+
+    public function katalog()
+    {
+        $produks = Produk::all();
+        return view('katalog', compact('produks'));
+    }
+
+    public function updateStatusOngkir(Request $request, $id)
+    {
+        $request->validate([
+            'status_ongkir' => 'required|in:Pembeli,Penjual',
+        ]);
+
+        $produk = Produk::findOrFail($id);
+        $produk->status_ongkir = $request->status_ongkir;
+        $produk->save();
+
+        return redirect()->back()->with('success', 'Status ongkir berhasil diubah!');
+    }
+
+    public function updateDiskon(Request $request, $id)
+    {
+        $produk = Produk::findOrFail($id);
+        $produk->diskon = $request->diskon ?? 0;
+        $produk->save();
+
+        return redirect()->back()->with('success', 'Diskon berhasil diperbarui.');
+    }
+    public function detail($id)
+    {
+        $produk = Produk::with('kategori')->findOrFail($id);
+        return view('detailproduk', compact('produk'));
     }
 }

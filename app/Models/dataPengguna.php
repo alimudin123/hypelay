@@ -15,9 +15,12 @@ class DataPengguna extends Model
         'user_id',
         'phone',
         'address',
+        'district',
         'city',
-        'postal_code',
+        'province',
+        'postal_code'
     ];
+
 
     public function user()
     {

@@ -14,69 +14,42 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        @auth
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                @if (Auth::user()->user_image)
-                <img
-                    src="{{ Auth::user()->user_image }}"
-                    class="user-image img-circle elevation-2"
-                    alt="User Imagess">
-                @else
-                <img
-                    src="{{ asset('vendor/adminlte3/img/user2-160x160.jpg') }}"
-                    class="user-image img-circle elevation-2"
-                    alt="User Imagess">
+                {{ Auth::user()->name }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <!-- User image -->
+                <li class="user-header bg-primary text-center">
+                    @if (Auth::user()->user_image)
+                    <img src="{{ Auth::user()->user_image }}" class="img-circle elevation-2" alt="User Image">
+                    @else
+                    <img src="{{ asset('vendor/adminlte3/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     @endif
-                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <!-- User image -->
-                    <li class="user-header bg-primary">
-                        @if (Auth::user()->user_image)
-                        <img
-                        src="{{ Auth::user()->user_image }}"
-                        class="img-circle elevation-2"
-                        alt="User Imagess">
-                        @else
-                        <img
-                            src="{{ asset('vendor/adminlte3/img/user2-160x160.jpg') }}"
-                            class="img-circle elevation-2"
-                            alt="User Imagess">
-                            @endif
+                    <p class="mt-2">
+                        {{ Auth::user()->name }}
+                        <small>Bergabung pada @DateIndo(Auth::user()->created_at)</small>
+                    </p>
+                </li>
 
-                            <p>
-                                {{ Auth::user()->name }}
-                                <small>Bergabung pada @DateIndo(Auth::user()->created_at)</small>
-                            </p>
-                        </li>
-                        <!-- Menu Body -- <li class="user-body"> <div class="row"> <div class="col-4
-                        text-center"> <a href="#">Followers</a> </div> <div class="col-4 text-center">
-                        <a href="#">Sales</a> </div> <div class="col-4 text-center"> <a
-                        href="#">Friends</a> </div> </div> <!-- /.row -- </li>-->
-
-                        <!-- Menu Footer-->
-                        <li class="user-footer">
-                            <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
-                            <a
-                                class="btn btn-default btn-flat float-right"
-                                href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-
-                                <form
-                                    id="logout-form"
-                                    action="{{ route('logout') }}"
-                                    method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                </form>
-                                <i class="ni ni-user-run"></i>
-                                <span>Logout</span>
-                            </a>
-                            {{-- <a href="#" class="btn btn-default btn-flat float-right">Sign out</a> --}}
-                        </li>
-                    </ul>
+                <!-- Menu Footer -->
+                <li class="user-footer">
+                    <a href="{{ route('profile') }}" class="btn btn-default btn-flat">Profile</a>
+                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-right"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <span>Logout</span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
-        </nav>
-        <!-- /.navbar -->
+        </li>
+        @else
+        <li class="nav-item">
+            <a href="{{ route('login') }}" class="nav-link">Login</a>
+        </li>
+        @endauth
+    </ul>
+</nav>

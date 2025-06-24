@@ -27,7 +27,6 @@
                         <tr>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Foto</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -58,7 +57,6 @@ $(document).ready(function () {
         columns: [
             { data: "name" },
             { data: "email" },
-            { data: "user_image" },
             { data: "options" }
         ],
         language: {

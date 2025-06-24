@@ -22,7 +22,7 @@ class User extends Authenticatable
         'phone',
         'address',
         'city',
-        'postalCode' // <- Ini hanya berguna kalau kolomnya memang ada di tabel users (saat ini tidak)
+        'postalCode'
     ];
 
     protected $hidden = [

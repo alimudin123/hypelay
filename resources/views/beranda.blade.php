@@ -9,27 +9,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet"></style>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #fff;
-            color: #111;
+            background-color: #ffffff;
+            color: #000000;
         }
 
+        /* Search */
         .search-input {
             max-width: 480px;
             border-radius: 2rem !important;
-            border: 2px solid #059669 !important;
+            border: 2px solidrgb(0, 0, 0) !important;
+            /* Abu-abu soft */
             padding-left: 3rem !important;
             height: 42px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            background-color: #ffffff;
+            color: #000000;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: #a6a6a6;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .search-input:focus {
-            border-color: #10b981 !important;
-            box-shadow: none !important;
+            border-color: #000000 !important;
+            /* Hitam saat fokus */
+            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.1) !important;
+            background-color: #ffffff;
+            color: #000000;
         }
 
         .search-icon {
@@ -37,12 +50,13 @@
             left: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            color: #059669;
+            color: #000000;
+            /* Ikon hitam */
             pointer-events: none;
             font-size: 24px;
         }
 
-        /* Hero banner grid */
+        /* Hero */
         .hero-img {
             border-radius: 1rem;
             object-fit: cover;
@@ -58,31 +72,43 @@
             outline-offset: 4px;
         }
 
+        /* CTA Button */
         .btn-cta {
-            background: linear-gradient(135deg, #059669, #10b981);
+            background-color: #a6a6a6;
+            color: #000000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 5.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 1.75rem 5rem;
             border: none;
-            font-weight: 600;
-            font-size: 1.25rem;
-            padding: 1rem 3rem;
             border-radius: 2rem;
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
-            transition: background 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
             user-select: none;
+            display: inline-block;
+            text-align: center;
         }
 
-        .btn-cta:hover,
+        /* Hover */
+        .btn-cta:hover {
+            background-color: #8c8c8c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Fokus */
         .btn-cta:focus {
-            background: linear-gradient(135deg, #10b981, #059669);
-            box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
             outline: none;
+            box-shadow: 0 0 0 4px #00000055;
         }
 
-        /*Gambar Grid pada Beranda*/
+        /* Grid Beranda */
         .gambar-beranda {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(2, 200px);
-            /* bisa sesuaikan tinggi */
             gap: 1rem;
         }
 
@@ -93,13 +119,11 @@
             border-radius: 8px;
         }
 
-        /* Gambar besar kiri */
         .item-1 {
             grid-column: 1 / 2;
             grid-row: 1 / 3;
         }
 
-        /* Dua gambar kecil kanan atas */
         .item-2 {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
@@ -110,13 +134,12 @@
             grid-row: 1 / 2;
         }
 
-        /* Gambar besar bawah kanan */
         .item-4 {
             grid-column: 2 / 5;
             grid-row: 2 / 3;
         }
 
-        /* Products horizontal scroll */
+        /* Carousel */
         .products-carousel-wrapper {
             position: relative;
             margin-bottom: 2rem;
@@ -136,8 +159,8 @@
             border-radius: 1rem;
             border: 1px solid #d1d5db;
             margin-right: 1.5rem;
-            background: #fff;
-            box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
+            background: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             transition: box-shadow 0.3s ease;
             cursor: pointer;
             vertical-align: top;
@@ -146,7 +169,7 @@
 
         .product-card:hover,
         .product-card:focus-within {
-            box-shadow: 0 10px 20px rgba(5, 150, 105, 0.25);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             outline: none;
         }
 
@@ -172,22 +195,22 @@
             padding: 0.75rem 1rem;
             font-weight: 600;
             font-size: 1rem;
-            color: #059669;
+            color: #000000;
             text-align: center;
         }
 
-        /* Carousel nav buttons */
+        /* Carousel Buttons */
         .carousel-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: #059669;
+            background: #000000;
             border: none;
             border-radius: 50%;
             width: 44px;
             height: 44px;
-            color: white;
-            box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -199,7 +222,7 @@
 
         .carousel-nav-btn:hover,
         .carousel-nav-btn:focus {
-            background-color: #0d9488;
+            background-color: #333333;
             outline: none;
         }
 
@@ -214,10 +237,10 @@
         /* Footer */
         footer {
             background-color: #f3f4f6;
-            padding: 3rem 1rem 3rem 1rem;
+            padding: 3rem 1rem;
         }
 
-        /* Promo slider */
+        /* Footer Slider */
         .footer-promo-slider {
             overflow: hidden;
             border-radius: 1rem;
@@ -236,20 +259,33 @@
             width: 360px;
             height: 160px;
             border-radius: 1rem;
-            background-color: #059669;
-            color: white;
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-family: 'Bebas Neue', sans-serif;
             font-weight: 600;
-            font-size: 1.25rem;
+            font-size: 1.75rem;
             display: flex;
             justify-content: center;
             align-items: center;
             user-select: none;
             cursor: default;
+            border: 2px solid #000000;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Footer columns */
+        .footer-promo-slide:hover,
+        .footer-promo-slide:focus {
+            transform: scale(1.03);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            outline: none;
+        }
+
+
+        /* Footer Columns */
         .footer-column h3 {
-            color: #059669;
+            color: #000000;
             font-weight: 700;
             font-size: 1.25rem;
             margin-bottom: 1rem;
@@ -257,7 +293,7 @@
 
         .footer-column p {
             font-size: 1rem;
-            color: #374151;
+            color: #4b4b4b;
             margin-bottom: 1rem;
         }
 
@@ -273,21 +309,23 @@
 
         .footer-column ul li a {
             font-weight: 600;
-            color: #4b5563;
+            color: #4b4b4b;
             transition: color 0.3s ease;
+            text-decoration: none;
         }
 
         .footer-column ul li a:hover,
         .footer-column ul li a:focus {
-            color: #059669;
+            color: #a6a6a6;
             outline: none;
         }
 
+        /* CTA Join */
         .join-cta-button {
             padding: 0.6rem 2.5rem;
-            background-color: #059669;
+            background-color: #000000;
             border-radius: 2rem;
-            color: white;
+            color: #ffffff;
             font-weight: 600;
             font-size: 1rem;
             border: none;
@@ -298,11 +336,11 @@
 
         .join-cta-button:hover,
         .join-cta-button:focus {
-            background-color: #047857;
+            background-color: #333333;
             outline: none;
         }
 
-        /* Social icons */
+        /* Social Icons */
         .footer-social {
             margin-top: 1.5rem;
             display: flex;
@@ -312,34 +350,42 @@
         .social-icon {
             width: 40px;
             height: 40px;
-            background-color: #059669;
+            background-color: #000000;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: #ffffff;
             transition: background-color 0.3s ease;
-            text-decoration: none;
             font-size: 1.5rem;
+            text-decoration: none;
             cursor: pointer;
         }
 
         .social-icon:hover,
         .social-icon:focus {
-            background-color: #047857;
+            background-color: #4a4a4a;
             outline: none;
         }
 
-        /* Accessibility focus visible */
+        /* Accessibility */
         :focus-visible {
-            outline: 3px solid #22c55e;
+            outline: 3px solid #a6a6a6;
             outline-offset: 3px;
         }
+
+        @media (max-width: 576px) {
+            .btn-cta {
+                font-size: 1.25rem;
+                padding: 1rem 2rem;
+            }
+        }
     </style>
+
 </head>
 
 <body>
-    @include('layouts.header')
+    @include('layouts.app')
     <main>
         <div class="d-flex justify-content-center my-4" role="search" aria-label="Pencarian produk utama">
             <form class="position-relative w-100" style="max-width: 480px;">
@@ -353,74 +399,50 @@
             <div class="container">
                 <div class="gambar-beranda">
                     <div class="item item-1">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/896ea5cc-d46c-4260-a8c0-79727c719dbc.png" alt="Banner Promosi Musim Gugur" />
+                        <img src="{{ asset('storage/beranda/A1.png') }}" alt="Banner Diskon Spesial" />
                     </div>
                     <div class="item item-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b6b3aac2-5ee2-472c-ba26-96c187bafb94.png" alt="Banner Diskon Spesial" />
+                        <img src="{{ asset('storage/beranda/A2.png') }}" alt="Banner Diskon Spesial" />
                     </div>
                     <div class="item item-3">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7aeb9468-2d78-42b1-8050-ed63fe04e418.png" alt="Banner Koleksi Baru" />
+                        <img src="{{ asset('storage/beranda/A3.png') }}" alt="Banner Diskon Spesial" />
                     </div>
                     <div class="item item-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9336c41a-4512-4c06-a1a1-b8dbfb7f5590.png" alt="Banner Style Modern" />
+                        <img src="{{ asset('storage/beranda/A4.png') }}" alt="Banner Diskon Spesial" />
                     </div>
                 </div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-cta" type="button" aria-label="Tombol aksi Belanja">Belanja Sekarang</button>
+                    <a href="{{ route('katalog') }}" class="btn btn-cta" role="button" aria-label="Tombol aksi Belanja">
+                        Belanja Sekarang
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- Our Collection -->
-        <section id="products" class="py-5" aria-label="Halaman Koleksi Produk" tabindex="-1" style="outline:none;">
-            <div class="container">
-                <h2 class="mb-4 text-success fw-bold">Our Collection</h2>
-                <div class="mb-3">
-                    <button type="button" class="btn btn-outline-success active" aria-pressed="true" aria-controls="product-list" id="tab-lorem" tabindex="0">Street Wear</button>
-                    <!-- Future tabs could be added here -->
-                </div>
-                <div class="products-carousel-wrapper position-relative">
-                    <button class="carousel-nav-btn carousel-nav-left" aria-label="Scroll produk ke kiri" id="btn-scroll-left" tabindex="0" type="button">
+                <div class="products-carousel-wrapper mt-5 position-relative">
+                    <button class="carousel-nav-btn carousel-nav-left" id="btn-scroll-left" aria-label="Gulir ke kiri">
                         <span class="material-icons">chevron_left</span>
                     </button>
-                    <div class="products-carousel" id="product-list" role="region" aria-labelledby="tab-lorem" tabindex="0" aria-live="polite" aria-atomic="true">
+
+                    <div class="products-carousel" id="product-list" role="region" aria-label="Produk Terbaru">
+                        @foreach ($produks as $produk)
                         <div class="product-card" tabindex="0">
                             <div class="product-img-wrapper rounded-top overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/db9ac3e9-dd56-4f5e-8388-3766090e0369.png" alt="Gambar produk 1 dengan desain fashion hijau" class="w-100" />
+                                <img src="{{ asset('storage/' . $produk->foto) }}" alt="Gambar {{ $produk->nama }}" class="w-100" />
                             </div>
-                            <div class="product-label text-center py-2 fw-semibold text-success">Nama Produk 1</div>
-                        </div>
-                        <div class="product-card" tabindex="0">
-                            <div class="product-img-wrapper rounded-top overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8fde3e2f-acae-4c8d-be65-3afa83e65f41.png" alt="Gambar produk 2 dengan desain fashion hijau" class="w-100" />
+                            <div class="product-label text-center py-2" style="color: #000000; font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; letter-spacing: 0.5px;">
+                                {{ $produk->nama }}
                             </div>
-                            <div class="product-label text-center py-2 fw-semibold text-success">Nama Produk 2</div>
                         </div>
-                        <div class="product-card" tabindex="0">
-                            <div class="product-img-wrapper rounded-top overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/02cb556a-b518-4e2d-88fd-eb15ed780e2d.png" alt="Gambar produk 3 dengan desain fashion hijau tua" class="w-100" />
-                            </div>
-                            <div class="product-label text-center py-2 fw-semibold text-success">Nama Produk 3</div>
-                        </div>
-                        <div class="product-card" tabindex="0">
-                            <div class="product-img-wrapper rounded-top overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33c38883-5535-4808-9002-bcef001359dd.png" alt="Gambar produk 4 dengan desain fashion hijau pekat" class="w-100" />
-                            </div>
-                            <div class="product-label text-center py-2 fw-semibold text-success">Nama Produk 4</div>
-                        </div>
-                        <div class="product-card" tabindex="0">
-                            <div class="product-img-wrapper rounded-top overflow-hidden">
-                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/418dce1c-901c-426d-bccf-ac38e2b0a59a.png" alt="Gambar produk 5 dengan desain fashion hijau klasik" class="w-100" />
-                            </div>
-                            <div class="product-label text-center py-2 fw-semibold text-success">Nama Produk 5</div>
-                        </div>
+                        @endforeach
                     </div>
-                    <button class="carousel-nav-btn carousel-nav-right" aria-label="Scroll produk ke kanan" id="btn-scroll-right" tabindex="0" type="button">
+
+                    <button class="carousel-nav-btn carousel-nav-right" id="btn-scroll-right" aria-label="Gulir ke kanan">
                         <span class="material-icons">chevron_right</span>
                     </button>
                 </div>
+
             </div>
         </section>
+
+
 
     </main>
 
@@ -457,14 +479,13 @@
                     <h3 id="footer-help-title">Bantuan</h3>
                     <ul class="list-unstyled">
                         <li><a href="#" tabindex="0" class="text-decoration-none">Pusat Bantuan</a></li>
-                        <li><a href="#" tabindex="0" class="text-decoration-none">Pengembalian Barang</a></li>
                         <li><a href="#" tabindex="0" class="text-decoration-none">Kontak Kami</a></li>
                     </ul>
                 </section>
                 <section class="footer-column col-lg-4" aria-labelledby="footer-join-title" tabindex="0" style="outline:none;">
                     <h3 id="footer-join-title">Bergabung</h3>
                     <p>Dapatkan informasi terbaru dan penawaran eksklusif langsung ke inbox Anda.</p>
-                    <button type="button" class="join-cta-button mb-3" aria-label="Tombol untuk bergabung dengan newsletter">Gabung Sekarang</button>
+                    <a href="{{ route('login') }}" class="join-cta-button mb-3" aria-label="Tombol untuk masuk atau bergabung melalui login">Gabung Sekarang</a>
                     <div class="footer-social d-flex gap-3" role="region" aria-label="Tombol sosial media">
                         <a href="#" class="social-icon" aria-label="Facebook" tabindex="0"><span class="material-icons" aria-hidden="true">facebook</span></a>
                         <a href="#" class="social-icon" aria-label="Twitter" tabindex="0"><span class="material-icons" aria-hidden="true">twitter</span></a>
